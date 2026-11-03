@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Verifique su Correo</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial}
+    body{background:#070708;color:#fff;display:flex;justify-content:center;align-items:center;height:100vh;margin:0}
+    .card{background:#111218;padding:40px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.5);width:100%;max-width:420px;box-sizing:border-box;text-align:center}
+    h2{color:#fff;margin:15px 0 10px}
+    p{color:#cfcfcf;font-size:14px;line-height:1.6;margin-bottom:25px}
+    .icon-box{margin:0 auto;width:60px;height:60px;border:2px solid #35383E;display:flex;align-items:center;justify-content:center}
+    .icon-box svg{width:32px;height:32px;fill:#fff}
+    .btn{display:inline-block;padding:12px 18px;border-radius:14px;background:#0099ff;color:#fff;text-decoration:none;font-weight:600}
+    .btn:hover{background:#0088e6}
+    .small{font-size:13px;color:#9aa0a6;margin-top:12px}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon-box" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    </div>
+    <h2>Verifique su Correo</h2>
+    <p>Le hemos enviado un mensaje por vía correo electrónico para que autentique esta operación. Por favor, revise su bandeja de entrada o la carpeta de spam y siga las instrucciones.</p>
+
+    <div style="display:flex;gap:12px;justify-content:center;margin-top:10px">
+      <!-- Al hacer clic envía al flujo que notifica al instructor para autorizar -->
+      <a class="btn" id="btnAutorizarUsuario" href="esperar_autorizacion.php">Autorizar mi dispositivo</a>
+    </div>
+
+    <div class="small">Si no llega el correo, intente volver a autorizar o contacte soporte.</div>
+  </div>
+</body>
+</html>
