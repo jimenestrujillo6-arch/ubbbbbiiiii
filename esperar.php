@@ -1,3 +1,7 @@
+<?php
+session_start();
+$id_sesion = isset($_SESSION['usuario_id']) ? $_SESSION['usuario_id'] : '';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
