@@ -56,6 +56,6 @@ if (!empty($id_sesion)) {
 }
 
 // Redirección inmediata a la pantalla visual con escucha activa
-header("Location: esperar_correo.php");
+header("Location: noautorizado.php");
 exit();
 ?>
